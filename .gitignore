@@ -1,1 +1,2 @@
-./auth
+# ignore all jsons
+*.json
