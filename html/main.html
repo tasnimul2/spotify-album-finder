@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Album Art Finder</title>
+		<h1 id="heading">WELCOME TO SPOTIFY ALBUM FINDER!</h1>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Varela+Round&display=swap');
+			*{
+                font-family: 'Poppins', sans-serif;
+            }
+			form{
+				margin: 0 auto;
+				max-width:500px;
+				overflow-x:hidden;
+			}
+			fieldset{
+				display: flex;
+			}
+			input#artist{
+				flex-grow:100;
+				margin: 0 20px;
+			}
+
+			input#submitButton{
+                background-color : black;
+                color : white;
+                border-radius: 10px;
+                border : solid black;
+            }
+            #submitButton:hover{
+                background-color : white;
+                color : black;
+                border-radius : 10px solid black;
+                border: solid black;
+            }
+
+			fieldset{
+                margin-top : 15px;
+                border : none;
+                background :linear-gradient(to right, #1DB954,  #059c3a);
+                color : white;
+                border : 5px  solid white;
+                border-radius : 10px ;
+            }
+
+			#heading{
+                text-align: center;
+            }
+            #artistInput{
+                background: rgba(0,0,0,0.2);
+                backdrop-filter: saturate(180%) blur(10px);
+                border : none;
+                border-radius : 10px ;
+                text-align: center;
+                color : white;
+				margin: auto;
+
+            }
+
+		</style>
+	</head>
+	<body>
+		<form action="search" method="get">
+			<img src="../images/banner.png" alt="Album Artist Search" width="500" height="200" />
+			<fieldset>
+				<label for="artist">Artist Name:</label>
+				<input id="artistInput" name="artist" type="text" />
+				<input id="submitButton" type="submit" value="Search" />
+			</fieldset>
+		</form>
+	</body>
+</html>
