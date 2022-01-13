@@ -65,7 +65,7 @@ function connection_handler(req, res){
 		//the url structure comes from the main.html from tag. 
 		const myURL = new URL(req.url,"https://localhost:3000"); //the first param is the url we care about, the second one is the base url, incase the 1st has an issue
 		let artist = myURL.searchParams.get("artist");
-		if(artist.length === 0){
+		if(artist.replace(/\s/g, '').length === 0){
 			artist = "weeknd";
 		}
 		let cache_valid = false;
