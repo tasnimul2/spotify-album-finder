@@ -195,6 +195,7 @@ function received_search_result(serialized_search_object,artist,res){
 }
 
 /*
+//no need cuz we are not downloading the image
 function download_image(url,downloaded_images, artist,res){
 	let tokenlized_url = url.split("/");
 	let filename = tokenlized_url[tokenlized_url.length -1];
