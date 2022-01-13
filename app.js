@@ -224,6 +224,16 @@ function album_html(album_info,artist){
 			cursor: pointer;
 		}
 
+		#container:hover img{
+			width : 250px;
+			height: 250px;
+		}
+
+		img {
+			box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+			border-radius : 2px;
+		}
+
         em{
             color : black;
         }
@@ -231,6 +241,14 @@ function album_html(album_info,artist){
 			max-width : 90%;
 			margin-top : 20px;	
 		}
+
+		@media screen and (max-width: 500px) {
+  
+            #container {
+                width: 70%;
+            }
+        }
+
     
     </style>
 	
@@ -238,7 +256,7 @@ function album_html(album_info,artist){
 	for(let i =0; i < album_info.length;i++){
 		htmlData += 
 		`<div id="container" onclick="window.open('${album_info[i].external_url}','mywindow');">
-			<img id="album-art" src="${album_info[i].url}" alt="Album Art" width="300" height="300"> 
+			<img id="album-art" src="${album_info[i].url}" alt="Album Art" width="270" height="270"> 
 			<h3><em>Album Name :</em>  ${album_info[i].name}</h3>
 			<h3><em>Release Date :</em>  ${album_info[i].release_date}</h3>
 		</div>`
