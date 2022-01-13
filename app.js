@@ -14,9 +14,6 @@ const https = require('https');
 const port = process.env.PORT || 3000;
 const server = http.createServer(); //create an https server that is used thoughout the app
 const querystring = require("querystring");
-/* this gets the client_id and client_secret from credentials.json and sets it to the
-variables in the brackets on the left. */
-//const {client_id,client_secret} = require('./auth/credentials.json') 
 server.on("request", connection_handler);
 
 const CACHED_TOKEN_DIR = './auth/authentication-res.json';
@@ -100,7 +97,6 @@ for the data that goes inside the form / body , we set it inside post_data
 we then check the token_request https request for an error and response. If there is a response, from the request
 we pass in the token stream received from the response and parse it to a token object / message.   */
 function request_access_token(artist,res){
-	//const {client_id, client_secret} = require('./auth/credentials.json');
 	let client_id = process.env.client_id;
 	let client_secret = process.env.client_secret;
 	let base64data = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
@@ -185,38 +181,10 @@ function received_search_result(serialized_search_object,artist,res){
 		album_data.external_url = albums[i].external_urls.spotify;
 		album_info.push(album_data);
 	}
-	/*
-	const downloaded_images = {
-		images_list : [],
-		amount_to_download : album_art_urls.length
-	}
-	*/
-	//album_art_urls.map(url => download_image(url,downloaded_images,artist,res));
 	
 	generate_webpage(album_info,artist,res);
 }
 
-/*
-//no need cuz we are not downloading the
-function download_image(url,downloaded_images, artist,res){
-	let tokenlized_url = url.split("/");
-	let filename = tokenlized_url[tokenlized_url.length -1];
-	const path_where_img_saved = `album-art/${filename}.jpg`;
-	const image_request  = https.get(url);
-	
-	image_request.on("response",function receive_image_data(image_stream){
-		const save_image = fs.createWriteStream(path_where_img_saved,{encoding:null});
-		image_stream.pipe(save_image);
-		save_image.on("finish",function(){
-			downloaded_images.images_list.push(path_where_img_saved);
-			console.log("downloaded image to path : ",path_where_img_saved);
-			if(downloaded_images.images_list.length >= downloaded_images.amount_to_download){
-				generate_webpage(downloaded_images.images_list,artist,res);
-			}
-		})
-	})
-}
-*/
 function generate_webpage(album_info,artist,res){
 	//let image_component = file_path_list_for_images.map(image_path => `<img src="${image_path}"/>`).join("");
 	let htmlData = album_html(album_info,artist)
