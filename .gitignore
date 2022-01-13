@@ -1,3 +1,4 @@
 # ignore all jsons
 credentials.json
 authentication-res.json
+/node_modules
