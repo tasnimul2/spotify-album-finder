@@ -64,7 +64,10 @@ function connection_handler(req, res){
 		//this this case req.url is search?artist=whatEveryUserTypedIN
 		//the url structure comes from the main.html from tag. 
 		const myURL = new URL(req.url,"https://localhost:3000"); //the first param is the url we care about, the second one is the base url, incase the 1st has an issue
-		const artist = myURL.searchParams.get("artist");
+		let artist = myURL.searchParams.get("artist");
+		if(artist.length === 0){
+			artist = "weeknd";
+		}
 		let cache_valid = false;
 		if(fs.existsSync(CACHED_TOKEN_DIR)){
 			cached_token_object = require(CACHED_TOKEN_DIR);
@@ -213,13 +216,14 @@ function download_image(url,downloaded_images, artist,res){
 */
 function generate_webpage(album_info,artist,res){
 	//let image_component = file_path_list_for_images.map(image_path => `<img src="${image_path}"/>`).join("");
-	let htmlData = album_html(album_info)
+	let htmlData = album_html(album_info,artist)
 	res.writeHead(200,{"Content-Type":"text/html"});
 	res.end(`<h1>${artist}</h1> ${htmlData}`);
 }
 
-function album_html(album_info){
+function album_html(album_info,artist){
 	let htmlData = `
+	<title>${artist}'s Albums</title>
 	<style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Varela+Round&display=swap');
         *{
@@ -245,6 +249,7 @@ function album_html(album_info){
         }
 		#container:hover{
 			background :linear-gradient(to right, #059c3a,  #1DB954);
+			cursor: pointer;
 		}
 
         em{
