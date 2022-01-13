@@ -1,2 +1,4 @@
 # ignore all jsons
 /node_modules
+./auth/credentials.json
+./auth/authentication-res.json
