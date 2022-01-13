@@ -1,2 +1,3 @@
 # ignore all jsons
-*.json
+credentials.json
+authentication-res.json
