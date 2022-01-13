@@ -16,7 +16,7 @@ const server = http.createServer(); //create an https server that is used though
 const querystring = require("querystring");
 /* this gets the client_id and client_secret from credentials.json and sets it to the
 variables in the brackets on the left. */
-const {client_id,client_secret} = require('./auth/credentials.json') 
+//const {client_id,client_secret} = require('./auth/credentials.json') 
 server.on("request", connection_handler);
 
 const CACHED_TOKEN_DIR = './auth/authentication-res.json';
@@ -100,7 +100,9 @@ for the data that goes inside the form / body , we set it inside post_data
 we then check the token_request https request for an error and response. If there is a response, from the request
 we pass in the token stream received from the response and parse it to a token object / message.   */
 function request_access_token(artist,res){
-	const {client_id, client_secret} = require('./auth/credentials.json');
+	//const {client_id, client_secret} = require('./auth/credentials.json');
+	let client_id = process.env.client_id;
+	let client_secret = process.env.client_secret;
 	let base64data = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 	
 	const options = {
