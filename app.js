@@ -63,6 +63,7 @@ function connection_handler(req, res){
 		const myURL = new URL(req.url,"https://localhost:3000"); //the first param is the url we care about, the second one is the base url, incase the 1st has an issue
 		let artist = myURL.searchParams.get("artist");
 		if(artist.replace(/\s/g, '').length === 0){
+			//the replace method removed all space characters 
 			artist = "weeknd";
 		}
 		let cache_valid = false;
