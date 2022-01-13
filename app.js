@@ -7,11 +7,11 @@ Comment (Required):
 
 =-=-=-=-=-=-=-=-=-=-=-=-
 */
-
+require('dotenv').config();
 const fs  = require('fs');
 const http = require('http');
-const https = require('https')
-const port = 3000;
+const https = require('https');
+const port = process.env.PORT || 3000;
 const server = http.createServer(); //create an https server that is used thoughout the app
 const querystring = require("querystring");
 /* this gets the client_id and client_secret from credentials.json and sets it to the
@@ -195,7 +195,7 @@ function received_search_result(serialized_search_object,artist,res){
 }
 
 /*
-//no need cuz we are not downloading the image
+//no need cuz we are not downloading the
 function download_image(url,downloaded_images, artist,res){
 	let tokenlized_url = url.split("/");
 	let filename = tokenlized_url[tokenlized_url.length -1];
@@ -284,4 +284,4 @@ function listening_handler(){
 	console.log(`Now Listening on Port ${port}`);
 }
 
-server.listen(process.env.PORT || port);
+server.listen(port);
