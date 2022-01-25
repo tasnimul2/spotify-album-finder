@@ -2,7 +2,6 @@
 
 Demo : https://spotify-album-finder.herokuapp.com/
 
-![](https://im7.ezgif.com/tmp/ezgif-7-19a791048d.gif)
 
 - Created a HTTP Server with vanilla Node.js (no express)
 
